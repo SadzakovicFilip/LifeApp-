@@ -8,13 +8,13 @@ import BalanceIcon from "@mui/icons-material/Balance";
 import LaptopMacIcon from "@mui/icons-material/LaptopMac";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import Link from "next/link";
-const SecondaryListItems = () => {
+const SecondaryListItems = ({mode}:any) => {
   return (
         <React.Fragment>
           <ListSubheader component="div" inset>
             Businesses
           </ListSubheader>
-          <Link href="/Law" style={{ textDecoration: "none", color: "black" }}>
+          <Link href="/Law" style={{ textDecoration: "none", color: mode? "white" : "black"  }}>
             <ListItemButton>
               <ListItemIcon>
                 <BalanceIcon style={{ color: "	goldenrod" }} />
@@ -24,7 +24,7 @@ const SecondaryListItems = () => {
           </Link>
           <Link
             href="/Programming"
-            style={{ textDecoration: "none", color: "black" }}
+            style={{ textDecoration: "none", color: mode? "white" : "black"  }}
           >
             <ListItemButton>
               <ListItemIcon>
@@ -33,7 +33,7 @@ const SecondaryListItems = () => {
               <ListItemText primary="Programming " />
             </ListItemButton>
           </Link>
-          <Link href="/Ranting" style={{ textDecoration: "none", color: "black" }}>
+          <Link href="/Ranting" style={{ textDecoration: "none", color: mode? "white" : "black"  }}>
             <ListItemButton>
               <ListItemIcon>
                 <ApartmentIcon style={{ color: "darkorchid" }} />
