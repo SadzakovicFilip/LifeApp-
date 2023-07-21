@@ -1,10 +1,7 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import Link from 'next/link'
-import Dashboard from '@/components/Dashboard/dashboard'
+import React from "react";
+import Dashboard from "@/components/Dashboard/Dashboard";
+const index = () => {
+  return <Dashboard />;
+};
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
-  return <Dashboard/>
-}
+export default index;
