@@ -14,15 +14,15 @@ import Container from "@mui/material/Container";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import NightsStayIcon from '@mui/icons-material/NightsStay';
-import LightModeIcon from '@mui/icons-material/LightMode';
-
-
+import NightsStayIcon from "@mui/icons-material/NightsStay";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import Image from "next/image";
+import { FormControl, Select, InputLabel, MenuItem } from "@mui/material";
 import { useRouter } from "next/router";
-import MainListItemsContent from "@/components/SharedLayouts/ListItems/listItems";
+import MainListItemsContent from "@/components/SharedLayouts/ListItems/MainlistItems";
 import SecondaryListItems from "./ListItems/SecondaryListItems";
-import { Switch } from "@mui/material";
-import { timeData } from "@/recharts/storybook/stories/data";
+import { SerbianFlag, BritishFlag } from "./locales/customFlagIcons";
+
 const drawerWidth: number = 240;
 
 interface AppBarProps extends MuiAppBarProps {
@@ -75,32 +75,37 @@ const Drawer = styled(MuiDrawer, {
 
 const mdTheme = createTheme();
 const darkModeTheme = createTheme({
-palette:{
-  mode:"dark"
-}
-})
+  palette: {
+    mode: "dark",
+  },
+});
 type Props = {
   children: React.ReactNode;
 };
 function SharedLayoutContent({ children }: Props) {
-  const [darkMode, setDarkMode] = React.useState(false)
-  React.useEffect(()=>{
-    const time = new Date()
-    const hours = time.getHours()
-     if(hours>19 || hours<6){
-      setDarkMode(true)
-     } else {
-      setDarkMode(false)
-     }
-  },[])
-  const router = useRouter()
+  const [darkMode, setDarkMode] = React.useState(false);
+  React.useEffect(() => {
+    const time = new Date();
+    const hours = time.getHours();
+    if (hours > 18 || hours < 6) {
+      setDarkMode(true);
+    } else {
+      setDarkMode(false);
+    }
+  }, []);
+  const router = useRouter();
+  const { locale, asPath } = router;
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
   };
 
+  const changeLanguage = (value: any) => {
+    router.push(`${asPath}`, `/${asPath}`, { locale: value });
+  };
+
   return (
-    <ThemeProvider theme={darkMode? darkModeTheme : mdTheme}>
+    <ThemeProvider theme={darkMode ? darkModeTheme : mdTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
@@ -130,15 +135,48 @@ function SharedLayoutContent({ children }: Props) {
             >
               User
             </Typography>
-          
-            <IconButton color="inherit" sx={{pr:"30px"}}>
+
+            <FormControl
+              style={{
+                width: "70px",
+                marginRight: "30px",
+                display: "flex",
+                textAlign: "center",
+              }}
+            >
+              <InputLabel id="demo-simple-select-label">
+                {locale === "en" ? `English` : `Srpski`}
+              </InputLabel>
+              <Select
+                style={{ height: "45px" }}
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Language"
+                placeholder="lang"
+                onChange={(e) => changeLanguage(e.target.value)}
+                value={locale}
+              >
+                <MenuItem value={`sr`}>
+                  <SerbianFlag />
+                </MenuItem>
+                <MenuItem value={`en`}>
+                  <BritishFlag />
+                </MenuItem>
+              </Select>
+            </FormControl>
+
+            <IconButton color="inherit" sx={{ mr: "30px" }}>
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-              <IconButton onClick={()=>setDarkMode(!darkMode)}>
-                {darkMode?<NightsStayIcon/> : <LightModeIcon style={{color:"gold"}}/>}
-              </IconButton>
+            <IconButton onClick={() => setDarkMode(!darkMode)}>
+              {darkMode ? (
+                <NightsStayIcon />
+              ) : (
+                <LightModeIcon style={{ color: "gold" }} />
+              )}
+            </IconButton>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -150,16 +188,16 @@ function SharedLayoutContent({ children }: Props) {
               px: [1],
             }}
           >
-            <h3>{`${router.asPath.slice(1,router.asPath.length)}`}</h3>
+            <h3>{`${asPath.slice(1, router.asPath.length)}`}</h3>
             <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton>
           </Toolbar>
           <Divider />
           <List component="nav">
-            <MainListItemsContent mode={darkMode}/>
+            <MainListItemsContent mode={darkMode} locale={locale} />
             <Divider sx={{ my: 1 }} />
-            <SecondaryListItems mode={darkMode}/>
+            <SecondaryListItems mode={darkMode} locale={locale} />
           </List>
         </Drawer>
         <Box
