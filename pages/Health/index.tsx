@@ -1,8 +1,10 @@
 import React from 'react'
+import Health from '@/components/Health/Health'
+import { Grid,Paper, Typography,Box } from '@mui/material'
 
 function indexHealth() {
   return (
-    <div>indexHealth</div>
+    <Box><Health/></Box>
   )
 }
 
