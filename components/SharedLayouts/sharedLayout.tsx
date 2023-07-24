@@ -213,9 +213,9 @@ function SharedLayoutContent({ children }: Props) {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+          <Box  sx={{ m:0,p:0}}>
             {children}
-          </Container>
+          </Box>
         </Box>
       </Box>
     </ThemeProvider>
