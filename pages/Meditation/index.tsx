@@ -1,8 +1,12 @@
 import React from 'react'
+import Meditation from '@/components/Meditation/Meditation'
+import { Box } from "@mui/material";
 
 function indexMeditation() {
   return (
-    <div>indexMeditation</div>
+    <Box>
+      <Meditation/>
+    </Box>
   )
 }
 

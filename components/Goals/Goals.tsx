@@ -3,7 +3,7 @@ import {useState,useEffect} from "react"
 import Animation from './Animation'
 import MainPage from './MainPage'
 
-const DashBoard = () => {
+const Goals = () => {
     const [animation,setAnimation] = useState(true)
     useEffect(()=>{
         setTimeout(() => {
@@ -15,4 +15,4 @@ const DashBoard = () => {
   )
 }
 
-export default DashBoard
+export default Goals

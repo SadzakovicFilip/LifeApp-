@@ -1,9 +1,12 @@
-import React from 'react'
-
+import React from "react";
+import { Box } from "@mui/material";
+import Goals from "@/components/Goals/Goals";
 function indexGoals() {
   return (
-    <div>indexGoals</div>
-  )
+    <Box>
+      <Goals />
+    </Box>
+  );
 }
 
-export default indexGoals
+export default indexGoals;

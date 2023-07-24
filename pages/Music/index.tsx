@@ -1,9 +1,12 @@
-import React from 'react'
-
+import React from "react";
+import { Box } from "@mui/material";
+import Music from "@/components/Music/Music";
 function indexMusic() {
   return (
-    <div>indexMusic</div>
-  )
+    <Box>
+      <Music />
+    </Box>
+  );
 }
 
-export default indexMusic
+export default indexMusic;
