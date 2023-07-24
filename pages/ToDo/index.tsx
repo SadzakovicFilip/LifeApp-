@@ -1,9 +1,12 @@
 import React from 'react'
+import { Box } from "@mui/material";
+import ToDo from '@/components/ToDo/ToDo';
 
 function indexToDo() {
   return (
-    <div>indexToDo</div>
-  )
+<Box>
+  <ToDo/>
+</Box>  )
 }
 
 export default indexToDo

@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import { Box } from "@mui/material";
+import Ranting from "@/components/Ranting/Ranting";
 
 function indexRanting() {
   return (
-    <div>indexRanting</div>
-  )
+    <Box>
+      <Ranting />
+    </Box>
+  );
 }
 
-export default indexRanting
+export default indexRanting;

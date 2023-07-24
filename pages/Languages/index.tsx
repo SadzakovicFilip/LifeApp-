@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import Languages from "@/components/Languages/Languages";
+import { Box } from "@mui/material";
 
 function indexLanguages() {
   return (
-    <div>indexLanguages</div>
-  )
+    <Box>
+      <Languages />
+    </Box>
+  );
 }
 
-export default indexLanguages
+export default indexLanguages;

@@ -1,10 +1,10 @@
 import React from "react";
 import { Box } from "@mui/material";
-import BooksHomePage from "@/components/Books/BooksHomePage";
+import Books from "@/components/Books/Books";
 function indexBooks() {
   return (
     <Box>
-      <BooksHomePage />
+      <Books />
     </Box>
   );
 }
